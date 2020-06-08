@@ -13,3 +13,7 @@ Pill Detection & Classification Deep Learning Project (using Xception, ResNet 50
 <li>Prediction Presentation</li>
 </li>
 
+<li>
+Stanford Course: CS231n Convolutional Neural Networks for Visual Recognition (2017) Assignments<br>
+  <ul>
+    <a href='https://github.com/philgineer/deeplearning_projects/tree/master/stanford_cs231n/assignment1'>Assignment 1</a>

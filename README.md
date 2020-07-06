@@ -12,7 +12,8 @@ My machine learning &amp; deep learning projects
 
   <li>
   Stanford Course: CS231n Convolutional Neural Networks for Visual Recognition (2017) Assignments<br>
-  1. <a href='https://github.com/philgineer/deeplearning_projects/tree/master/stanford_cs231n/assignment1'>Assignment 1</a><br>
+  1. <a href='https://github.com/philgineer/deeplearning_projects/tree/master/stanford_cs231n/assignment1'>Assignment 1</a>
+  </li><br>
   
   <li>
   Book: <파이썬 라이브러리를 활용한 머신러닝><br>

@@ -16,8 +16,9 @@ My machine learning &amp; deep learning projects
   </li><br>
   
   <li>
-  Book: <파이썬 라이브러리를 활용한 머신러닝><br>
-  intro_to_ml
+  Books: <br>
+  <파이썬 라이브러리를 활용한 머신러닝> intro_to_ml <br>
+  <밑바닥부터 시작하는 딥러닝> deep_learning_from_scratch
   
   
   

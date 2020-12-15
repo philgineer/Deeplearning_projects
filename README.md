@@ -11,8 +11,9 @@ My machine learning &amp; deep learning projects
   </li><br>
 
   <li>
-  Stanford Course: CS231n Convolutional Neural Networks for Visual Recognition (2017) Assignments<br>
-  1. <a href='https://github.com/philgineer/deeplearning_projects/tree/master/stanford_cs231n/assignment1'>Assignment 1</a>
+  Lectures: <br>
+  1. Stanford Course: <CS231n Convolutional Neural Networks for Visual Recognition> with Assignments<br>
+  2. Coursera Course: <Machine Learning> with Assignments<br>
   </li><br>
   
   <li>

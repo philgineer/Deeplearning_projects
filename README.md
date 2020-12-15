@@ -12,8 +12,8 @@ My machine learning &amp; deep learning projects
 
   <li>
   Lectures & Assignments: <br>
-  1. Stanford Course: CS231n Convolutional Neural Networks for Visual Recognition (stanford_cs231n)<br>
-  2. Coursera Course: Machine Learning (coursera_ml)<br>
+  1. Stanford Course: <a href="https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv">CS231n Convolutional Neural Networks for Visual Recognition</a> (stanford_cs231n)<br>
+  2. Coursera Course: <a href="https://www.coursera.org/learn/machine-learning">Machine Learning</a> (coursera_ml)<br>
   </li><br>
   
   <li>

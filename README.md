@@ -11,15 +11,15 @@ My machine learning &amp; deep learning projects
   </li><br>
 
   <li>
-  Lectures: <br>
-  1. Stanford Course: CS231n Convolutional Neural Networks for Visual Recognition (with Assignments)<br>
-  2. Coursera Course: Machine Learning (with Assignments)<br>
+  Lectures & Assignments: <br>
+  1. Stanford Course: CS231n Convolutional Neural Networks for Visual Recognition (stanford_cs231n)<br>
+  2. Coursera Course: Machine Learning (coursera_ml)<br>
   </li><br>
   
   <li>
   Books: <br>
-  <파이썬 라이브러리를 활용한 머신러닝> intro_to_ml <br>
-  <밑바닥부터 시작하는 딥러닝> deep_learning_from_scratch
+  1. 파이썬 라이브러리를 활용한 머신러닝 (intro_to_ml) <br>
+  2. 밑바닥부터 시작하는 딥러닝 (deep_learning_from_scratch)
   
   
   

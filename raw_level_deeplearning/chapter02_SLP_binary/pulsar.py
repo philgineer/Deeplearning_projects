@@ -1,5 +1,3 @@
-# Single Layer Perceptron
-
 import numpy as np
 import csv
 import time
@@ -13,15 +11,14 @@ RND_STD = 0.03
 LEARNING_RATE = 0.01
 
 
-def abalone_exec(epoch_count=2000, mb_size=100, report=100):
-    load_abalone_dataset()
+def pulsar_exec(epoch_count=10, mb_size=10, report=1):
+    load_pulsar_dataset()
     init_model()
-    train_and_test(epoch_count, mb_size, report)
+    train_and_test(epoch_count, mb_size, report, show=True)
 
 
-def load_abalone_dataset():
-    with open('../../../../data/raw_level/abalone.csv') as csvfile:
-        # https://www.kaggle.com/rodolfomendes/abalone-dataset
+def load_pulsar_dataset():
+    with open('../../../../data/raw_level/pulsar_stars.csv') as csvfile:
         csvreader = csv.reader(csvfile)
         next(csvreader, None)
         rows = []
@@ -29,14 +26,8 @@ def load_abalone_dataset():
             rows.append(row)
 
     global data, input_cnt, output_cnt
-    input_cnt, output_cnt = 10, 1
-    data = np.zeros([len(rows), input_cnt + output_cnt])
-
-    for n, row in enumerate(rows):
-        if row[0] == 'I': data[n, 0] = 1
-        if row[0] == 'M': data[n, 1] = 1
-        if row[0] == 'F': data[n, 2] = 1
-        data[n, 3:] = row[1:]
+    input_cnt, output_cnt = 8, 1
+    data = np.asarray(rows, dtype='float32')
 
 
 def init_model():
@@ -45,7 +36,7 @@ def init_model():
     bias = np.zeros([output_cnt])
 
 
-def train_and_test(epoch_count, mb_size, report):
+def train_and_test(epoch_count, mb_size, report, show=False):
     step_count = arrange_data(mb_size)
     test_x, test_y = get_test_data()
 
@@ -60,11 +51,13 @@ def train_and_test(epoch_count, mb_size, report):
 
         if report > 0 and (epoch+1) % report == 0:
             acc = run_test(test_x, test_y)
-            print('Epoch {}: loss={:5.3f}, acc={:5.3f}/{:5.3f}'.
-                    format(epoch+1, np.mean(losses), np.mean(accs), acc))
+            if show==True:
+                print('Epoch {}: loss={:5.3f}, acc={:5.3f}/{:5.3f}'.
+                format(epoch+1, np.mean(losses), np.mean(accs), acc))
 
     final_acc = run_test(test_x, test_y)
-    print('\nFinal Test: acc = {:5.3f}'.format(final_acc))
+    if show==True:
+        print('\nFinal Test: acc = {:5.3f}'.format(final_acc))
 
 
 def arrange_data(mb_size):
@@ -132,26 +125,55 @@ def backprop_neuralnet(G_output, x):
 
 
 def forward_postproc(output, y):
-    diff = output - y
-    square = np.square(diff)
-    loss = np.mean(square)
+    entropy = sigmoid_cross_entropy_with_logits(y, output)
+    loss = np.mean(entropy)
 
-    return loss, diff
+    return loss, [y, output, entropy]
 
 
-def backprop_postproc(G_loss, diff):
-    return 2 * diff / np.prod(diff.shape)
+def backprop_postproc(G_loss, aux):
+    y, output, entropy = aux
+
+    g_loss_entropy = 1.0 / np.prod(entropy.shape)
+    g_entropy_output = sigmoid_cross_entropy_with_logits_derv(y, output)
+
+    G_entropy = g_loss_entropy * G_loss
+    G_output = g_entropy_output * G_entropy
+
+    return G_output
 
 
 def eval_accuracy(output, y):
-    mdiff = np.mean(np.abs((output - y) / y))
+    estimate = np.greater(output, 0)
+    answer = np.greater(y, 0.5)
+    correct = np.equal(estimate, answer)
 
-    return 1 - mdiff
+    return np.mean(correct)
 
 
-abalone_exec()
+def relu(x):
+    return np.maximum(x, 0)
 
-print('\nweight')
-print(weight)
-print('\nbias')
-print(bias)
+
+def sigmoid(x):
+    return np.exp(-relu(-x)) / (1.0 + np.exp(-np.abs(x)))
+
+
+def sigmoid_derv(x, y):
+    return y * (1 - y)
+
+
+def sigmoid_cross_entropy_with_logits(z, x):
+    return relu(x) - x * z + np.log(1 + np.exp(-np.abs(x)))
+
+
+def sigmoid_cross_entropy_with_logits_derv(z, x):
+    return -z + sigmoid(x)
+
+
+if __name__ == "__main__":
+    pulsar_exec()
+    print('\nweight')
+    print(weight)
+    print('\nbias')
+    print(bias)

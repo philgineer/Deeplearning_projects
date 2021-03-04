@@ -96,7 +96,7 @@ def get_train_data(mb_size, nth):
 
 def run_train(x, y):
     output, aux_nn = forward_neuralnet(x)
-    loss, aux_pp = forward_postproc(output, y)
+    loss, aux_pp = forward_postproc(output, y) # post processing
     accuracy = eval_accuracy(output, y)
 
     G_loss = 1.0
@@ -114,7 +114,7 @@ def run_test(x, y):
 
 
 def forward_neuralnet(x):
-    global wieght, bias
+    global weight, bias
     output = np.matmul(x, weight) + bias
 
     return output, x

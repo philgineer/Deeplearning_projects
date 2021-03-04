@@ -64,12 +64,13 @@ def train_and_test(epoch_count, mb_size, report, show=False):
             loss, _ = run_train(train_x, train_y)
             losses.append(loss)
 
+        if (epoch == 0):
+            print('                            | ACC  | PREC  | RECAL | F1  |')
         if report > 0 and (epoch+1) % report == 0:
             acc = run_test(test_x, test_y)
             acc_str = ' | '.join(['%5.3f']*4) % tuple(acc)
             if show==True:
-                if (epoch == 0):
-                    print('                            | ACC  | PREC  | RECAL | F1  |')
+
                 print('Epoch {:2d}: loss={:5.3f}, result={}'.
                 format(epoch+1, np.mean(losses), acc_str))
 
@@ -215,3 +216,4 @@ if __name__ == "__main__":
     print(weight)
     print('\nbias')
     print(bias)
+    print('output shape == bias shape: ', bias.shape)
